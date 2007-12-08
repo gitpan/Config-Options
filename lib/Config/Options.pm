@@ -46,8 +46,7 @@ use strict;
 use Data::Dumper;
 use Carp;
 
-our $VERSION       = 0.03;
-our %OPTFILE_CACHE = ();
+our $VERSION       = 0.04;
 
 =pod
 
@@ -153,10 +152,10 @@ sub deepmerge {
     my $option = shift;
     my @seen   = ( $self, $option );
     return unless ( ref $option );
-    while ( my ( $k, $v ) = each %{$option} ) {
+MERGE:	while ( my ( $k, $v ) = each %{$option} ) {
         if ( exists $self->{$k} ) {
             if ( ref $v ) {
-                foreach (@seen) { next if $v eq $_ }
+                foreach (@seen) { next MERGE if $v eq $_ }
                 push @seen, $v;
 
                 if ( ref $v eq "ARRAY" ) {
@@ -239,10 +238,7 @@ sub fromfile_perl {
     }
     my $n = 0;
     foreach my $f ( @{$files} ) {
-        if ( exists $OPTFILE_CACHE{$f} ) {
-            $self->deepmerge( $OPTFILE_CACHE{$f} );
-        }
-        elsif ( -e $f ) {
+        if ( -e $f ) {
             if ( ( exists $self->{verbose} ) && ( $self->{verbose} ) ) {
                 print STDERR "Loading options from $f\n";
             }
@@ -254,11 +250,7 @@ sub fromfile_perl {
             }
             close(IN);
             my $o = $self->deserialize( $sub, "Options File: $f" );
-            if ($o) {
-                $n++;
-                $OPTFILE_CACHE{$f} = $o;
-                $self->deepmerge($o);
-            }
+	    $o && $n++;
         }
     }
     return $n;

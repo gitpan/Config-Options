@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 
-use Test::More tests => 14;
+use Test::More tests => 15;
 use File::Temp;
 use 5.0061;
 
@@ -29,6 +29,7 @@ SKIP: {
 	$options->{mood} = "thrilled";
 	ok ($options->fromfile_perl, 			 'Retrieve from tmpfile');
 	is ($options->{mood}, "sardonic");
+	ok ($options->fromfile_perl, 			 'Retrieve from tmpfile again');
 	ok (unlink($options->{optionfile}->[0]), 'unlink tmpfile');
 }
 
