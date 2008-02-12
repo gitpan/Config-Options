@@ -1,3 +1,11 @@
+Release Name: 0.06 
+=======================
+ * deepmerge will no longer allow an undefined value to replace a defined one.
+
+Release Name: 0.05 
+=======================
+ * Bug fix with perl version require in test
+
 Release Name: 0.04 Dec-07-2007
 =======================
  * Bug fix with deepmerge recursion check 
