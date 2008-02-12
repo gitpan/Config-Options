@@ -1,3 +1,7 @@
+Release Name: 0.07 
+=======================
+ * Fixed module name in POD
+
 Release Name: 0.06 
 =======================
  * deepmerge will no longer allow an undefined value to replace a defined one.

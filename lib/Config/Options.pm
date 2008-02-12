@@ -1,5 +1,5 @@
 package Config::Options;
-our $VERSION       = 0.06;
+our $VERSION       = 0.07;
 # Copyright (c) 2007 Edward Allen III. All rights reserved.
 #
 ## This program is free software; you can redistribute it and/or
@@ -11,7 +11,7 @@ our $VERSION       = 0.06;
 
 =head1 NAME
 
-Config::Options- module to provide a configuration hash with option to read from file.
+Config::Options - module to provide a configuration hash with option to read from file.
 
 =head1 SYNOPSIS
 
