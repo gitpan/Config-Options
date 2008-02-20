@@ -158,6 +158,11 @@ Output optons hash as a scalar using Data::Dumper.
 	my $scalar = $options->serialize();
 
 
+=item del($key)
+
+Removes $key from options.
+
+
 =back
 
 =head1 BUGS

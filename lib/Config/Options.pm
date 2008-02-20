@@ -1,5 +1,5 @@
 package Config::Options;
-our $VERSION       = 0.07;
+our $VERSION       = 0.08;
 # Copyright (c) 2007 Edward Allen III. All rights reserved.
 #
 ## This program is free software; you can redistribute it and/or
@@ -124,19 +124,6 @@ sub options {
     }
     return $self;
 }
-
-=item del()
-
-Takes a key and deletes it.
-
-=cut
-
-sub del {
-    my $self = shift;
-	my $key = shift;
-	delete $self->{$key};
-}
-	
 
 
 =item merge()
@@ -421,6 +408,12 @@ sub serialize {
     return $d->Purity(1)->Terse(1)->Deepcopy(1)->Dump;
 }
 
+=item del($key)
+
+Removes $key from options.
+
+=cut
+
 sub DESTROY {
 }
 
@@ -444,13 +437,16 @@ Since it comes from an external file, the data is considered tainted.
 
 L<Config::General>
 
-=head1 COPYRIGHT
-
-Copyright (c) 2007 Edward Allen III. All rights reserved.
+=head1 LICENSE
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the Artistic License, distributed
 with Perl.
+
+=head1 COPYRIGHT
+
+Copyright (c) 2007 Edward Allen III. Some rights reserved.
+
 
 
 =cut
